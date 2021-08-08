@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: backend
+  namespace: portfolio-creator
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`portfolio-creator-api.dens.dev`)
+      kind: Rule
+      services:
+        - name: backend
+          port: 80
+  tls:
+    secretName: dens.dev-tls
