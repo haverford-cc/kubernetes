@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bitwarden
+  namespace: bitwarden
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bitwarden.dens.dev`)
+      kind: Rule
+      services:
+        - name: bitwarden
+          port: 80
+  tls:
+    secretName: dens.dev-tls
