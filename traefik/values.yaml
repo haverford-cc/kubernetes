@@ -1,0 +1,30 @@
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+
+deployment:
+  enabled: true
+  kind: DaemonSet
+
+logs:
+  general:
+    # Available levels: DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
+    level: INFO
+  access:
+    # To enable access logs
+    enabled: false
+
+ports:
+  websecure:
+    tls:
+      enabled: true
+
+globalArguments:
+  - "--global.checknewversion"
+
+additionalArguments:
+  - "--providers.kubernetesingress=true"
+  - "--api.dashboard=true"
+
+persistence:
+  enabled: false
