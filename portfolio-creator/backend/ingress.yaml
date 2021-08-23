@@ -7,10 +7,12 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`portfolio-creator-api.dens.dev`)
+    - match: Host(`portfolio-creator.dens.dev`) && PathPrefix(`/api`)
       kind: Rule
       services:
         - name: backend
           port: 80
+      middlewares:
+        - name: backend-api-strip-prefix
   tls:
     secretName: dens.dev-tls

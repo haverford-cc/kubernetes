@@ -1,0 +1,9 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: backend-api-strip-prefix
+  namespace: portfolio-creator
+spec:
+  stripPrefix:
+    prefixes:
+      - /api
